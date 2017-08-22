@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="5dp">
+
+
+    <ImageView
+        android:id="@+id/thumbnailImageView"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/thumbnailImageView"
+        android:layout_toEndOf="@id/thumbnailImageView"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/primaryTextSize"
+        android:textStyle="bold"
+        android:typeface="sans"
+        tools:text="This should be a long description like this example that I'm showing."/>
+
+
+    <TextView
+        android:id="@+id/authorTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/descriptionTextView"
+        android:layout_alignStart="@id/descriptionTextView"
+        android:layout_below="@id/descriptionTextView"
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="@dimen/tinySize"
+        tools:ignore="SmallSp"
+        tools:text="Author 123"/>
+
+    <TextView
+        android:id="@+id/commentsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/authorTextView"
+        android:layout_below="@id/descriptionTextView"
+        android:gravity="end"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="@dimen/tinySize"
+        tools:text="30012 comments"/>
+
+
+    <TextView
+        android:id="@+id/timeTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/authorTextView"
+        android:layout_alignEnd="@id/authorTextView"
+        android:layout_below="@id/authorTextView"
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="@dimen/tinySize"
+        tools:text="12 hour ago"/>
+
+</RelativeLayout>
