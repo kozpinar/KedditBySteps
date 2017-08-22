@@ -1,9 +1,11 @@
-package com.kozpinar.kedditbysteps.commons.adapters
+package com.kozpinar.kedditbysteps.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import com.kozpinar.kedditbysteps.R
-import com.kozpinar.kedditbysteps.commons.inflate
+import com.kozpinar.kedditbysteps.commons.adapters.ViewType
+import com.kozpinar.kedditbysteps.commons.adapters.ViewTypeDelegateAdapter
+import com.kozpinar.kedditbysteps.commons.extensions.inflate
 
 /**
  * Created by onur on 22.08.2017. KedditBySteps

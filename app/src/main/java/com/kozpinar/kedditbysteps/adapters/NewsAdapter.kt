@@ -4,7 +4,6 @@ import android.support.v4.util.SparseArrayCompat
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import com.kozpinar.kedditbysteps.commons.adapters.AdapterConstans
-import com.kozpinar.kedditbysteps.commons.adapters.LoadingDelegateAdapter
 import com.kozpinar.kedditbysteps.commons.adapters.ViewType
 import com.kozpinar.kedditbysteps.commons.adapters.ViewTypeDelegateAdapter
 
@@ -22,6 +21,7 @@ class NewsAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     init {
         delegateAdapters.put(AdapterConstans.LOADING, LoadingDelegateAdapter())
+        delegateAdapters.put(AdapterConstans.NEWS, NewsDelegateAdapter())
         items = ArrayList()
         items.add(loadingItem)
     }
