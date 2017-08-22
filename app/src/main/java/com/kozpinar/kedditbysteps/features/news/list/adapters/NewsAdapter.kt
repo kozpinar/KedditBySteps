@@ -1,4 +1,4 @@
-package com.kozpinar.kedditbysteps.adapters
+package com.kozpinar.kedditbysteps.features.news.list.adapters
 
 import android.support.v4.util.SparseArrayCompat
 import android.support.v7.widget.RecyclerView

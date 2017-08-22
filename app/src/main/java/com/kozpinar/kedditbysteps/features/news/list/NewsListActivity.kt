@@ -1,19 +1,19 @@
-package com.kozpinar.kedditbysteps.activities
+package com.kozpinar.kedditbysteps.features.news.list
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.kozpinar.kedditbysteps.R
-import com.kozpinar.kedditbysteps.adapters.NewsAdapter
-import kotlinx.android.synthetic.main.activity_main.*
+import com.kozpinar.kedditbysteps.features.news.list.adapters.NewsAdapter
+import kotlinx.android.synthetic.main.activity_news_list.*
 
 
-class MainActivity : AppCompatActivity() {
+class NewsListActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_news_list)
         setup()
     }
 
