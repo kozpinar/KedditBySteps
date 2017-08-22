@@ -3,9 +3,11 @@ package com.kozpinar.kedditbysteps.features.news.list.adapters
 import android.support.v4.util.SparseArrayCompat
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import com.kozpinar.kedditbysteps.commons.adapters.LoadingDelegateAdapter
 import com.kozpinar.kedditbysteps.commons.adapters.AdapterConstans
 import com.kozpinar.kedditbysteps.commons.adapters.ViewType
 import com.kozpinar.kedditbysteps.commons.adapters.ViewTypeDelegateAdapter
+import com.kozpinar.kedditbysteps.features.news.list.RedditNewsItem
 
 /**
  * Created by onur on 22.08.2017. KedditBySteps
@@ -35,5 +37,16 @@ class NewsAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         delegateAdapters.get(getItemViewType(position)).onBindViewHolder(holder, this.items[position])
+    }
+
+
+    fun addNews(news: List<RedditNewsItem>) {
+        val initPosition = items.size - 1
+        items.removeAt(initPosition)
+        notifyItemRemoved(initPosition)
+
+        items.addAll(news)
+        items.add(loadingItem)
+        notifyItemRangeChanged(initPosition, items.size + 1)
     }
 }

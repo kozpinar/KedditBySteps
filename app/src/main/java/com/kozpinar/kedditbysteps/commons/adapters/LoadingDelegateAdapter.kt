@@ -1,10 +1,8 @@
-package com.kozpinar.kedditbysteps.features.news.list.adapters
+package com.kozpinar.kedditbysteps.commons.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import com.kozpinar.kedditbysteps.R
-import com.kozpinar.kedditbysteps.commons.adapters.ViewType
-import com.kozpinar.kedditbysteps.commons.adapters.ViewTypeDelegateAdapter
 import com.kozpinar.kedditbysteps.commons.extensions.inflate
 
 /**

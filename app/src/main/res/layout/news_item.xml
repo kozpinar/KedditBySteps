@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="5dp">
+    android:padding="5dip">
 
 
     <ImageView
@@ -17,7 +17,7 @@
 
     <TextView
         android:id="@+id/descriptionTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/thumbnailImageView"
         android:layout_toEndOf="@id/thumbnailImageView"
@@ -30,21 +30,21 @@
 
     <TextView
         android:id="@+id/authorTextView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@id/descriptionTextView"
         android:layout_alignStart="@id/descriptionTextView"
         android:layout_below="@id/descriptionTextView"
         android:textColor="@color/secondaryTextColor"
         android:textSize="@dimen/tinySize"
         tools:ignore="SmallSp"
-        tools:text="Author 123"/>
+        tools:text="Author 123"
+        android:layout_toStartOf="@+id/commentsTextView" />
 
     <TextView
         android:id="@+id/commentsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@id/authorTextView"
+        android:layout_alignParentEnd="true"
         android:layout_below="@id/descriptionTextView"
         android:gravity="end"
         android:textColor="@color/colorPrimary"

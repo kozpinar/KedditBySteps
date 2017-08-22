@@ -8,7 +8,7 @@ import com.kozpinar.kedditbysteps.commons.adapters.ViewTypeDelegateAdapter
 import com.kozpinar.kedditbysteps.commons.extensions.getFriendlyTime
 import com.kozpinar.kedditbysteps.commons.extensions.inflate
 import com.kozpinar.kedditbysteps.commons.extensions.loadingImg
-import com.kozpinar.kedditbysteps.datas.RedditNewsItem
+import com.kozpinar.kedditbysteps.features.news.list.RedditNewsItem
 import kotlinx.android.synthetic.main.news_item.view.*
 
 /**
@@ -30,7 +30,8 @@ class NewsDelegateAdapter: ViewTypeDelegateAdapter {
         fun bind(item: RedditNewsItem) = with(itemView) {
             thumbnailImageView.loadingImg(item.thumbnail)
             descriptionTextView.text = item.title
-            authorTextView.text = "${item.numComments} comments"
+            commentsTextView.text = "${item.numComments} comments"
+            authorTextView.text = item.author
             timeTextView.text = item.created.getFriendlyTime()
         }
     }

@@ -1,4 +1,4 @@
-package com.kozpinar.kedditbysteps.datas
+package com.kozpinar.kedditbysteps.features.news.list
 
 import com.kozpinar.kedditbysteps.commons.adapters.AdapterConstans
 import com.kozpinar.kedditbysteps.commons.adapters.ViewType
