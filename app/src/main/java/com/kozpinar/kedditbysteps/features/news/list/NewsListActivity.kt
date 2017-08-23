@@ -7,17 +7,19 @@ import android.support.v7.widget.LinearLayoutManager
 import com.kozpinar.kedditbysteps.R
 import com.kozpinar.kedditbysteps.commons.InfiniteScrollListener
 import com.kozpinar.kedditbysteps.commons.RxBaseActivity
+import com.kozpinar.kedditbysteps.core.KedditApp
 import com.kozpinar.kedditbysteps.features.news.list.adapters.NewsAdapter
 import kotlinx.android.synthetic.main.activity_news_list.*
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
+import javax.inject.Inject
 
 
 class NewsListActivity : RxBaseActivity() {
 
-    private var redditNews: RedditNews? = null
+    @Inject lateinit var newsManager: NewsManager
 
-    private val newsManager by lazy { NewsManager() }
+    private var redditNews: RedditNews? = null
 
     companion object {
         private val KEY_REDDIT_NEWS = "redditNews"
@@ -28,6 +30,7 @@ class NewsListActivity : RxBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        KedditApp.newsComponent.inject(this)
         setContentView(R.layout.activity_news_list)
         setup()
 
