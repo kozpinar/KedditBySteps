@@ -4,7 +4,7 @@ import android.support.v4.util.SparseArrayCompat
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import com.kozpinar.kedditbysteps.commons.adapters.LoadingDelegateAdapter
-import com.kozpinar.kedditbysteps.commons.adapters.AdapterConstans
+import com.kozpinar.kedditbysteps.commons.adapters.AdapterConstants
 import com.kozpinar.kedditbysteps.commons.adapters.ViewType
 import com.kozpinar.kedditbysteps.commons.adapters.ViewTypeDelegateAdapter
 import com.kozpinar.kedditbysteps.features.news.list.RedditNewsItem
@@ -18,12 +18,12 @@ class NewsAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var items: ArrayList<ViewType>
     private var delegateAdapters = SparseArrayCompat<ViewTypeDelegateAdapter>()
     private val loadingItem = object: ViewType {
-        override fun getViewType() = AdapterConstans.LOADING
+        override fun getViewType() = AdapterConstants.LOADING
     }
 
     init {
-        delegateAdapters.put(AdapterConstans.LOADING, LoadingDelegateAdapter())
-        delegateAdapters.put(AdapterConstans.NEWS, NewsDelegateAdapter())
+        delegateAdapters.put(AdapterConstants.LOADING, LoadingDelegateAdapter())
+        delegateAdapters.put(AdapterConstants.NEWS, NewsDelegateAdapter())
         items = ArrayList()
         items.add(loadingItem)
     }
@@ -49,4 +49,20 @@ class NewsAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         items.add(loadingItem)
         notifyItemRangeChanged(initPosition, items.size + 1)
     }
-}
+
+    fun clearAndAddNews(news: List<RedditNewsItem>) {
+        items.clear()
+        notifyItemRangeRemoved(0, getLastPosition())
+
+        items.addAll(news)
+        items.add(loadingItem)
+        notifyItemRangeInserted(0, items.size)
+    }
+
+    fun getNews(): List<RedditNewsItem> =
+            items
+                    .filter { it.getViewType() == AdapterConstants.NEWS }
+                    .map { it as RedditNewsItem }
+
+
+    private fun getLastPosition() = if (items.lastIndex == -1) 0 else items.lastIndex}

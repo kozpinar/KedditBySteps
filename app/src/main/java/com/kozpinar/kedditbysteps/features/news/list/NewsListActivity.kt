@@ -6,51 +6,65 @@ import android.support.design.widget.Snackbar
 import android.support.v7.widget.LinearLayoutManager
 import com.kozpinar.kedditbysteps.R
 import com.kozpinar.kedditbysteps.commons.InfiniteScrollListener
+import com.kozpinar.kedditbysteps.commons.RxBaseActivity
 import com.kozpinar.kedditbysteps.features.news.list.adapters.NewsAdapter
 import kotlinx.android.synthetic.main.activity_news_list.*
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
-import rx.subscriptions.CompositeSubscription
 
 
-class NewsListActivity : AppCompatActivity() {
+class NewsListActivity : RxBaseActivity() {
 
     private var redditNews: RedditNews? = null
 
     private val newsManager by lazy { NewsManager() }
 
-    private var subscriptions = CompositeSubscription()
+    companion object {
+        private val KEY_REDDIT_NEWS = "redditNews"
+    }
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news_list)
         setup()
+
+        if (savedInstanceState != null && savedInstanceState.containsKey(KEY_REDDIT_NEWS)) {
+            redditNews = savedInstanceState.get(KEY_REDDIT_NEWS) as RedditNews
+            (newsListRecyclerView.adapter as NewsAdapter).clearAndAddNews(redditNews!!.news)
+        } else {
+            requestNews()
+        }
+
     }
 
 
-    override fun onResume() {
-        super.onResume()
-        subscriptions = CompositeSubscription()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        subscriptions.clear()
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val news = (newsListRecyclerView.adapter as NewsAdapter).getNews()
+        if (redditNews != null && news.size > 0) {
+            outState.putParcelable(KEY_REDDIT_NEWS, redditNews?.copy(news = news))
+        }
     }
 
 
     private fun setup() {
-        newsListRecyclerView?.setHasFixedSize(true)
-        val manager = LinearLayoutManager(this)
-        newsListRecyclerView?.layoutManager = manager
-        newsListRecyclerView.clearOnScrollListeners()
-        newsListRecyclerView.addOnScrollListener(InfiniteScrollListener({
-            requestNews()
-        }, manager))
-        newsListRecyclerView.adapter = NewsAdapter()
 
-        requestNews()
+        newsListRecyclerView.apply {
+            setHasFixedSize(true)
+            val manager = LinearLayoutManager(baseContext)
+            newsListRecyclerView?.layoutManager = manager
+            clearOnScrollListeners()
+            addOnScrollListener(InfiniteScrollListener({
+                requestNews()
+            }, manager))
+            adapter = NewsAdapter()
+
+        }
+
+
     }
 
     private fun requestNews() {
@@ -68,7 +82,7 @@ class NewsListActivity : AppCompatActivity() {
                                     .show()
                         }
                 )
-        subscriptions.add(subscription)
+        this.subscriptions.add(subscription)
     }
 }
 
