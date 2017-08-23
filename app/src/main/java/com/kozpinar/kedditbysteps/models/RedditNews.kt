@@ -6,12 +6,12 @@ package com.kozpinar.kedditbysteps.models
 class RedditNewsResponse(val data: RedditDataResponse)
 
 class RedditDataResponse(
-        val children: List<RedditChlidrenResponse>,
+        val children: List<RedditChildrenResponse>,
         val after: String?,
         val before: String?
 )
 
-class RedditChlidrenResponse(val data: RedditNewsDataResponse)
+class RedditChildrenResponse(val data: RedditNewsDataResponse)
 
 class RedditNewsDataResponse(
         val author: String,

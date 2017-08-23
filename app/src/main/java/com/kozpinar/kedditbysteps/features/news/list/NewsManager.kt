@@ -1,6 +1,7 @@
 package com.kozpinar.kedditbysteps.features.news.list
 
-import com.kozpinar.kedditbysteps.network.RestAPI
+import com.kozpinar.kedditbysteps.network.NewsAPI
+import com.kozpinar.kedditbysteps.network.NewsRestAPI
 import rx.Observable
 
 /**
@@ -8,12 +9,12 @@ import rx.Observable
  */
 
 class NewsManager(
-        private val api: RestAPI = RestAPI()
+        private val apiNews: NewsAPI = NewsRestAPI()
 ) {
     fun getNews(after: String, limit: String = "10"): Observable<RedditNews> {
         return Observable.create {
             subscriber ->
-            val callResponse = api.getNews(after, limit)
+            val callResponse = apiNews.getNews(after, limit)
             val response = callResponse.execute()
             if (response.isSuccessful) {
 

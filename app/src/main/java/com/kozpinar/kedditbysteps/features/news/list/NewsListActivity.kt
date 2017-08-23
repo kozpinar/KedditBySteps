@@ -51,7 +51,6 @@ class NewsListActivity : RxBaseActivity() {
 
 
     private fun setup() {
-
         newsListRecyclerView.apply {
             setHasFixedSize(true)
             val manager = LinearLayoutManager(baseContext)
@@ -61,10 +60,7 @@ class NewsListActivity : RxBaseActivity() {
                 requestNews()
             }, manager))
             adapter = NewsAdapter()
-
         }
-
-
     }
 
     private fun requestNews() {
