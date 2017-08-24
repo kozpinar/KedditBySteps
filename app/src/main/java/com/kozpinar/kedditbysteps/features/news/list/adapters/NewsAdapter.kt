@@ -8,6 +8,7 @@ import com.kozpinar.kedditbysteps.commons.adapters.AdapterConstants
 import com.kozpinar.kedditbysteps.commons.adapters.ViewType
 import com.kozpinar.kedditbysteps.commons.adapters.ViewTypeDelegateAdapter
 import com.kozpinar.kedditbysteps.features.news.list.RedditNewsItem
+import java.util.*
 
 /**
  * Created by onur on 22.08.2017. KedditBySteps
@@ -52,11 +53,9 @@ class NewsAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun clearAndAddNews(news: List<RedditNewsItem>) {
         items.clear()
-        notifyItemRangeRemoved(0, getLastPosition())
-
         items.addAll(news)
         items.add(loadingItem)
-        notifyItemRangeInserted(0, items.size)
+        notifyDataSetChanged()
     }
 
     fun getNews(): List<RedditNewsItem> =

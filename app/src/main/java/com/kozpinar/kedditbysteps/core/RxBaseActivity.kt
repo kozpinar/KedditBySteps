@@ -1,4 +1,4 @@
-package com.kozpinar.kedditbysteps.commons
+package com.kozpinar.kedditbysteps.core
 
 import android.support.v7.app.AppCompatActivity
 import rx.subscriptions.CompositeSubscription

@@ -2,7 +2,7 @@ package com.kozpinar.kedditbysteps.di.news
 
 import com.kozpinar.kedditbysteps.di.AppModule
 import com.kozpinar.kedditbysteps.di.NetworkModule
-import com.kozpinar.kedditbysteps.features.news.list.NewsListActivity
+import com.kozpinar.kedditbysteps.features.news.list.NewsPresenter
 import dagger.Component
 import javax.inject.Singleton
 
@@ -17,5 +17,5 @@ import javax.inject.Singleton
         NetworkModule::class)
 )
 interface NewsComponent {
-    fun inject(newsListActivity: NewsListActivity)
+    fun inject(newsPresenter: NewsPresenter)
 }
